@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Pterodactyl Hosting - Jual RAM Server</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0f1e 0%, #0c1222 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #facc15, #ef4444);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .nav-btn.active {
+            background: #7c3aed;
+            color: white;
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+        }
+
+        .nav-btn:hover:not(.active) {
+            background: #1e293b;
+            color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #ffffff, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            margin-top: 0.5rem;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #facc15, #ef4444);
+            padding: 0.5rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 800;
+            margin-top: 1rem;
+            color: #0a0f1e;
+        }
+
+        /* RAM Cards */
+        .ram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .ram-card {
+            background: linear-gradient(145deg, #111827, #0f172a);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid #1f2937;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .ram-card:hover {
+            transform: translateY(-5px);
+            border-color: #7c3aed;
+            box-shadow: 0 20px 30px -12px rgba(124, 58, 237, 0.3);
+        }
+
+        .ram-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ram-size {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #facc15;
+        }
+
+        .ram-price {
+            font-size: 1.3rem;
+            margin: 0.8rem 0;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .ram-desc {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+
+        .btn-order {
+            background: linear-gradient(95deg, #7c3aed, #a855f7);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 2rem;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        .btn-order:hover {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Form Order */
+        .order-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .order-summary, .order-details {
+            background: #111827;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            flex: 1;
+            border: 1px solid #1f2937;
+        }
+
+        .selected-ram {
+            background: #1e293b;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+        }
+
+        .input-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            color: white;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #7c3aed;
+        }
+
+        /* Admin Panel */
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: #111827;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px solid #1f2937;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #facc15;
+        }
+
+        .order-list {
+            background: #111827;
+            border-radius: 1rem;
+            overflow-x: auto;
+        }
+
+        .order-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .order-list th, .order-list td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .order-list th {
+            background: #0f172a;
+            color: #94a3b8;
+        }
+
+        .status-badge {
+            background: #22c55e;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .price-config {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            background: #1e293b;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-config input {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            width: 120px;
+        }
+
+        .btn-save-price {
+            background: #22c55e;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            padding: 0.8rem 1.8rem;
+            border-radius: 3rem;
+            opacity: 0;
+            transition: 0.2s;
+            pointer-events: none;
+            z-index: 1000;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .login-box {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #111827;
+            padding: 2rem;
+            border-radius: 2rem;
+            text-align: center;
+            border: 1px solid #7c3aed;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            color: white;
+        }
+
+        .login-btn {
+            background: #7c3aed;
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 2rem;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @media (max-width: 700px) {
+            .navbar { flex-direction: column; }
+            .toast { white-space: normal; width: 90%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">🦖 <span>PTERODACTYL</span> HOSTING</div>
+    <div class="nav-menu">
+        <button class="nav-btn active" data-page="home">🏠 Home</button>
+        <button class="nav-btn" data-page="order">💻 Order Server</button>
+        <button class="nav-btn" data-page="admin">👑 Admin Panel</button>
+    </div>
+</div>
+
+<div class="container">
+    <!-- HOME PAGE -->
+    <div id="homePage" class="page active-page">
+        <div class="hero">
+            <h1>Game Server Hosting</h1>
+            <p>Powered by Pterodactyl Panel • Full Control • 24/7 Uptime</p>
+            <div class="price-badge">⚡ Mulai dari Rp 1.000 / GB ⚡</div>
+        </div>
+
+        <div class="ram-grid" id="ramGrid"></div>
+
+        <div class="features">
+            <div class="feature"><div class="feature-icon">⚡</div><div>NVMe SSD</div><small>Kecepatan tinggi</small></div>
+            <div class="feature"><div class="feature-icon">🛡️</div><div>DDoS Protection</div><small>Keamanan maksimal</small></div>
+            <div class="feature"><div class="feature-icon">🎮</div><div>Support All Games</div><small>Minecraft, Rust, dll</small></div>
+            <div class="feature"><div class="feature-icon">🔄</div><div>Auto Backup</div><small>Data aman</small></div>
+        </div>
+    </div>
+
+    <!-- ORDER PAGE -->
+    <div id="orderPage" class="page">
+        <h2 style="margin-bottom: 1rem;">💻 Order VPS / Game Server</h2>
+        <div class="order-container">
+            <div class="order-summary">
+                <h3>📦 Ringkasan Order</h3>
+                <div id="selectedRamInfo" class="selected-ram">
+                    <p>Belum pilih RAM</p>
+                </div>
+                <div style="font-size: 1.5rem; font-weight: bold; color: #facc15;" id="orderTotal">Rp 0</div>
+            </div>
+            <div class="order-details">
+                <h3>📝 Detail Customer</h3>
+                <div class="input-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="customerName" placeholder="Masukkan nama">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="customerEmail" placeholder="email@example.com">
+                </div>
+                <div class="input-group">
+                    <label>Username Pterodactyl</label>
+                    <input type="text" id="pterodactylUser" placeholder="Username panel kamu">
+                </div>
+                <button class="btn-order" id="submitOrderBtn" style="background: linear-gradient(95deg, #22c55e, #16a34a);">✅ Pesan Sekarang</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN PAGE (with login) -->
+    <div id="adminPage" class="page">
+        <div id="adminLoginPanel">
+            <div class="login-box">
+                <h2>🔐 Admin Login</h2>
+                <p style="margin-bottom: 1rem;">Demo: admin / admin123</p>
+                <input type="text" id="adminUser" placeholder="Username" value="admin">
+                <input type="password" id="adminPass" placeholder="Password" value="admin123">
+                <button class="login-btn" id="adminLoginBtn">Login</button>
+                <div id="adminLoginError" style="color:#ef4444; margin-top:0.5rem;"></div>
+            </div>
+        </div>
+        <div id="adminDashboard" style="display: none;">
+            <h2>👑 Admin Dashboard</h2>
+            
+            <div class="price-config">
+                <span>💰 Harga per GB (Rp):</span>
+                <input type="number" id="pricePerGb" value="1000" step="500">
+                <button class="btn-save-price" id="savePriceBtn">💾 Simpan Harga</button>
+                <span style="margin-left: auto;">💡 1 GB = Rp <span id="currentPriceDisplay">1.000</span></span>
+            </div>
+
+            <div class="admin-stats">
+                <div class="stat-card"><div class="stat-number" id="totalOrders">0</div><div>Total Orders</div></div>
+                <div class="stat-card"><div class="stat-number" id="totalRevenue">Rp 0</div><div>Total Pendapatan</div></div>
+                <div class="stat-card"><div class="stat-number" id="activeOrders">0</div><div>Active Servers</div></div>
+            </div>
+
+            <h3>📋 Daftar Order Masuk</h3>
+            <div class="order-list">
+                <table id="ordersTable">
+                    <thead>
+                        <tr><th>Tanggal</th><th>Customer</th><th>RAM (GB)</th><th>Total Harga</th><th>Status</th><th>Aksi</th></tr>
+                    </thead>
+                    <tbody id="ordersTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="toastMsg" class="toast"></div>
+
+<script>
+    // ======================== DATA STORAGE ========================
+    let pricePerGB = 1000;  // 1GB = Rp 1000
+    let orders = [];
+    let selectedRAM = null;
+
+    // Load data dari localStorage
+    function loadData() {
+        const savedPrice = localStorage.getItem('ptero_price_per_gb');
+        if(savedPrice) pricePerGB = parseInt(savedPrice);
+        
+        const savedOrders = localStorage.getItem('ptero_orders');
+        if(savedOrders) orders = JSON.parse(savedOrders);
+        else orders = [];
+        
+        updatePriceDisplay();
+    }
+
+    function savePrice() {
+        localStorage.setItem('ptero_price_per_gb', pricePerGB);
+        updatePriceDisplay();
+        renderRAMCards();
+    }
+
+    function saveOrders() {
+        localStorage.setItem('ptero_orders', JSON.stringify(orders));
+    }
+
+    function updatePriceDisplay() {
+        document.getElementById('currentPriceDisplay')?.setAttribute('textContent', pricePerGB.toLocaleString());
+        if(document.getElementById('pricePerGb')) document.getElementById('pricePerGb').value = pricePerGB;
+    }
+
+    // RAM options
+    const ramOptions = [1, 2, 4, 8, 12, 16, 24, 32];
+
+    function renderRAMCards() {
+        const container = document.getElementById('ramGrid');
+        if(!container) return;
+        
+        container.innerHTML = ramOptions.map(ram => {
+            const totalPrice = ram * pricePerGB;
+            return `
+                <div class="ram-card" onclick="selectRAM(${ram}, ${totalPrice})">
+                    <div class="ram-icon">🧠</div>
+                    <div class="ram-size">${ram} GB RAM</div>
+                    <div class="ram-price">Rp ${totalPrice.toLocaleString()}</div>
+                    <div class="ram-desc">✓ Unlimited Bandwidth<br>✓ DDoS Protection<br>✓ Instant Setup</div>
+                    <button class="btn-order" onclick="event.stopPropagation(); selectRAM(${ram}, ${totalPrice})">Pilih Server</button>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Fungsi global untuk select RAM
+    window.selectRAM = function(ram, totalPrice) {
+        selectedRAM = { gb: ram, price: totalPrice };
+        const infoDiv = document.getElementById('selectedRamInfo');
+        if(infoDiv) infoDiv.innerHTML = `<p>✅ Server dengan <strong>${ram} GB RAM</strong></p><p>Harga: Rp ${totalPrice.toLocaleString()}</p>`;
+        document.getElementById('orderTotal').innerHTML = `Rp ${totalPrice.toLocaleString()}`;
+        showToast(`Server ${ram} GB dipilih, lanjutkan isi data`);
+        // pindah ke halaman order
+        navigateTo('order');
+    };
+
+    function submitOrder() {
+        const name = document.getElementById('customerName')?.value.trim();
+        const email = document.getElementById('customerEmail')?.value.trim();
+        const pteroUser = document.getElementById('pterodactylUser')?.value.trim();
+        
+        if(!name) { showToast("Masukkan nama!", true); return; }
+        if(!email || !email.includes('@')) { showToast("Email tidak valid!", true); return; }
+        if(!pteroUser) { showToast("Masukkan username Pterodactyl!", true); return; }
+        if(!selectedRAM) { showToast("Pilih RAM server dulu!", true); return; }
+        
+        const newOrder = {
+            id: Date.now(),
+            date: new Date().toLocaleString(),
+            customer: name,
+            email: email,
+            pteroUser: pteroUser,
+            ram: selectedRAM.gb,
+            total: selectedRAM.price,
+            status: "Pending"
+        };
+        
+        orders.unshift(newOrder);
+        saveOrders();
+        showToast(`✅ Order ${selectedRAM.gb} GB berhasil! Menunggu aktivasi admin.`);
+        
+        // reset form
+        selectedRAM = null;
+        document.getElementById('selectedRamInfo').innerHTML = '<p>Belum pilih RAM</p>';
+        document.getElementById('orderTotal').innerHTML = 'Rp 0';
+        document.getElementById('customerName').value = '';
+        document.getElementById('customerEmail').value = '';
+        document.getElementById('pterodactylUser').value = '';
+        
+        navigateTo('home');
+    }
+
+    // Admin functions
+    function renderAdminOrders() {
+        const tbody = document.getElementById('ordersTableBody');
+        if(!tbody) return;
+        
+        if(orders.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Belum ada order</td></tr>';
+            return;
+        }
+        
+        tbody.innerHTML = orders.map(order => `
+            <tr>
+                <td>${order.date}</td>
+                <td>${order.customer}<br><small>${order.email}</small><br><small>@${order.pteroUser}</small></td>
+                <td>${order.ram} GB</td>
+                <td>Rp ${order.total.toLocaleString()}</td>
+                <td><span class="status-badge" style="background: ${order.status === 'Active' ? '#22c55e' : '#facc15'}">${order.status}</span></td>
+                <td>
+                    ${order.status === 'Pending' ? `<button class="btn-save-price" style="background:#22c55e;" onclick="activateOrder(${order.id})">✅ Aktivasi</button>` : '✅ Active'}
+                    <button class="delete-btn" style="background:#ef4444; margin-left:0.3rem; padding:0.2rem 0.6rem; border:none; border-radius:0.5rem; cursor:pointer;" onclick="deleteOrder(${order.id})">🗑️</button>
+                </td>
+            </tr>
+        `).join('');
+        
+        // Update stats
+        document.getElementById('totalOrders').innerText = orders.length;
+        const revenue = orders.reduce((sum, o) => sum + o.total, 0);
+        document.getElementById('totalRevenue').innerHTML = `Rp ${revenue.toLocaleString()}`;
+        const active = orders.filter(o => o.status === 'Active').length;
+        document.getElementById('activeOrders').innerText = active;
+    }
+    
+    window.activateOrder = function(id) {
+        const order = orders.find(o => o.id === id);
+        if(order) {
+            order.status = 'Active';
+            saveOrders();
+            renderAdminOrders();
+            showToast(`Server ${order.ram} GB untuk ${order.customer} telah diaktifkan!`);
+        }
+    };
+    
+    window.deleteOrder = function(id) {
+        if(confirm('Hapus order ini?')) {
+            orders = orders.filter(o => o.id !== id);
+            saveOrders();
+            renderAdminOrders();
+            showToast('Order dihapus');
+        }
+    };
+    
+    // Price management
+    function initAdminPrice() {
+        const inputPrice = document.getElementById('pricePerGb');
+        if(inputPrice) {
+            inputPrice.value = pricePerGB;
+            inputPrice.addEventListener('change', (e) => {
+                const newPrice = parseInt(e.target.value);
+                if(newPrice > 0) {
+                    pricePerGB = newPrice;
+                    savePrice();
+                    renderRAMCards();
+                    showToast(`Harga per GB diubah jadi Rp ${pricePerGB.toLocaleString()}`);
+                } else {
+                    showToast('Harga tidak valid', true);
+                }
+            });
+        }
+        document.getElementById('savePriceBtn')?.addEventListener('click', () => {
+            const newPrice = parseInt(document.getElementById('pricePerGb').value);
+            if(newPrice > 0) {
+                pricePerGB = newPrice;
+                savePrice();
+                renderRAMCards();
+                showToast(`Harga per GB diubah jadi Rp ${pricePerGB.toLocaleString()}`);
+            }
+        });
+    }
+
+    // ======================== NAVIGATION & AUTH ========================
+    let isAdminLoggedIn = false;
+    
+    function checkAdminAuth() {
+        const auth = localStorage.getItem('ptero_admin_auth');
+        if(auth === 'true') {
+            isAdminLoggedIn = true;
+            document.getElementById('adminLoginPanel').style.display = 'none';
+            document.getElementById('adminDashboard').style.display = 'block';
+            renderAdminOrders();
+            initAdminPrice();
+        } else {
+            document.getElementById('adminLoginPanel').style.display = 'block';
+            document.getElementById('adminDashboard').style.display = 'none';
+        }
+    }
+    
+    document.getElementById('adminLoginBtn')?.addEventListener('click', () => {
+        const user = document.getElementById('adminUser').value;
+        const pass = document.getElementById('adminPass').value;
+        if(user === 'admin' && pass === 'admin123') {
+            localStorage.setItem('ptero_admin_auth', 'true');
+            checkAdminAuth();
+            showToast('Login berhasil!');
+        } else {
+            document.getElementById('adminLoginError').innerText = 'Login gagal! Gunakan admin/admin123';
+        }
+    });
+    
+    function logoutAdmin() {
+        localStorage.removeItem('ptero_admin_auth');
+        checkAdminAuth();
+        navigateTo('home');
+    }
+    
+    function navigateTo(pageId) {
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page'));
+        document.getElementById(`${pageId}Page`).classList.add('active-page');
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            if(btn.getAttribute('data-page') === pageId) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        
+        if(pageId === 'admin') {
+            checkAdminAuth();
+        }
+        if(pageId === 'home') {
+            renderRAMCards();
+        }
+    }
+    
+    function showToast(msg, isError = false) {
+        const toast = document.getElementById('toastMsg');
+        toast.textContent = msg;
+        toast.style.background = isError ? '#dc2626' : '#1e293b';
+        toast.style.opacity = '1';
+        setTimeout(() => toast.style.opacity = '0', 2700);
+    }
+    
+    // Event listeners
+    document.getElementById('submitOrderBtn')?.addEventListener('click', submitOrder);
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => navigateTo(btn.getAttribute('data-page')));
+    });
+    
+    // Extra logout button di admin jika diperlukan
+    // Initial
+    loadData();
+    renderRAMCards();
+    checkAdminAuth();
+    
+    // Tambahkan tombol logout di admin dashboard
+    const adminDashboardDiv = document.getElementById('adminDashboard');
+    if(adminDashboardDiv && !document.getElementById('adminLogoutBtn')) {
+        const logoutBtn = document.createElement('button');
+        logoutBtn.textContent = '🚪 Logout Admin';
+        logoutBtn.style.background = '#dc2626';
+        logoutBtn.style.border = 'none';
+        logoutBtn.style.padding = '0.5rem 1rem';
+        logoutBtn.style.borderRadius = '2rem';
+        logoutBtn.style.color = 'white';
+        logoutBtn.style.cursor = 'pointer';
+        logoutBtn.style.marginBottom = '1rem';
+        logoutBtn.onclick = () => {
+            localStorage.removeItem('ptero_admin_auth');
+            checkAdminAuth();
+            navigateTo('home');
+        };
+        adminDashboardDiv.insertBefore(logoutBtn, adminDashboardDiv.firstChild);
+    }
+</script>
+</body>
+</html>
